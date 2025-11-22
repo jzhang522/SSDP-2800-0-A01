@@ -21,7 +21,7 @@ function totalCart(cartItem){
   return (
     <div className="cart-container">
       <h2 className="container-header">Cart Items</h2>
-      <ul className="cart-list">
+      <ul className="cart-list"> 
         <li className="cart-header">
             <h3>Total Items: <span className="total-items"></span></h3>
         </li>

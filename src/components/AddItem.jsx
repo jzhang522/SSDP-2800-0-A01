@@ -49,7 +49,7 @@ function AddItem() {
                 </button>
             </div>
 
-            <Cart ></Cart>
+            <Cart/>
         </>
     );
 }
