@@ -84,7 +84,7 @@ function AddItem() {
                 </form>
             </div>
 
-            <Cart items={itemsArray}/>
+            <Cart items={itemsArray} setItems={setItemsArray}/>
         </>
     );
 }
