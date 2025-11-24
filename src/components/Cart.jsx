@@ -5,6 +5,7 @@ function Cart() {
   const [qty, setQty] = useState("");
   const [price, setPrice] = useState("");
   const [total, setTotal] = useState("");
+  const updateQuantity = 
 
 function totalCart(cartItem){
     setTotal()
@@ -23,8 +24,9 @@ function totalCart(cartItem){
       <h2 className="container-header">Cart Items</h2>
       <ul className="cart-list"> 
         <li className="cart-header">
-            <h3>Total Items: <span className="total-items"></span></h3>
+            <h3>Total Items: <span className="total-items">{}</span></h3>
         </li>
+        <li>{cartArr.map}</li>
       </ul>
     </div>
   );
