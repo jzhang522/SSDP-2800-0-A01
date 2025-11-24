@@ -4,7 +4,7 @@ import Cart from "./Cart";
 function AddItem() {
     const [itemName, setItemName] = useState("");
     const [price, setPrice] = useState(0);
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const [itemsArray, setItemsArray] = useState([]);
 
     function handleSubmit(e) {
@@ -12,12 +12,12 @@ function AddItem() {
 
         setItemsArray([
             ...itemsArray,
-            { name: itemName, price: price, quantity: quantity },
+            { id: Date.now() , name: itemName.trim(), price: parseFloat(price), quantity: parseInt(quantity) },
         ]);
 
         setItemName("");
         setPrice(0);
-        setQuantity(0);
+        setQuantity(1);
     }
 
     return (
@@ -45,6 +45,7 @@ function AddItem() {
                         id="price"
                         name="price"
                         min="0"
+                        step="0.01"
                         className="form-input-box"
                         placeholder="Enter price"
                         value={price}
@@ -58,7 +59,7 @@ function AddItem() {
                         id="quantity"
                         name="quantity"
                         min="0"
-                        max="100"
+                        max="99"
                         step="1"
                         className="form-input-box"
                         placeholder="Enter quantity"
