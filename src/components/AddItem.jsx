@@ -10,11 +10,19 @@ function AddItem() {
     function handleSubmit(e) {
         e.preventDefault();
 
+        //input validation (the rests are done by HTML)
+        if(itemName.trim() == "") {
+            alert("Please enter a valid item name — it can’t be only spaces.");
+            return;
+        }
+
+        //appends data to the items array
         setItemsArray([
             ...itemsArray,
             { id: Date.now() , name: itemName.trim(), price: parseFloat(price), quantity: parseInt(quantity) },
         ]);
 
+        //reset 
         setItemName("");
         setPrice(0);
         setQuantity(1);
@@ -58,7 +66,7 @@ function AddItem() {
                         type="number"
                         id="quantity"
                         name="quantity"
-                        min="0"
+                        min="1"
                         max="99"
                         step="1"
                         className="form-input-box"
