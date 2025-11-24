@@ -5,16 +5,19 @@ function AddItem() {
     const [itemName, setItemName] = useState("");
     const [price, setPrice] = useState(0);
     const [quantity, setQuantity] = useState(0);
-    const [itemArray, setItemArray] = useState([]);
+    const [itemsArray, setItemsArray] = useState([]);
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(itemName, price, quantity);
+
+        setItemsArray([
+            ...itemsArray,
+            { name: itemName, price: price, quantity: quantity },
+        ]);
 
         setItemName("");
         setPrice(0);
         setQuantity(0);
-
     }
 
     return (
@@ -22,10 +25,9 @@ function AddItem() {
             <div className="add-item-container">
                 <form onSubmit={handleSubmit} className="add-item-form">
                     <h2 className="containter-header">Add Item</h2>
-                    <label
-                        htmlFor="item-name"
-                        className="add-item-label"
-                    >Item Name:</label>
+                    <label htmlFor="item-name" className="add-item-label">
+                        Item Name:
+                    </label>
                     <input
                         type="text"
                         id="item-name"
@@ -35,7 +37,9 @@ function AddItem() {
                         value={itemName}
                         onChange={(e) => setItemName(e.target.value)}
                     />
-                    <label htmlFor="price" className="add-item-label">Item Price:</label>
+                    <label htmlFor="price" className="add-item-label">
+                        Item Price:
+                    </label>
                     <input
                         type="number"
                         id="price"
@@ -46,10 +50,9 @@ function AddItem() {
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
-                    <label
-                        htmlFor="quantity"
-                        className="add-item-label"
-                    >Quantity</label>
+                    <label htmlFor="quantity" className="add-item-label">
+                        Quantity
+                    </label>
                     <input
                         type="number"
                         id="quantity"
@@ -72,7 +75,7 @@ function AddItem() {
                 </form>
             </div>
 
-            <Cart />
+            <Cart items={itemsArray}/>
         </>
     );
 }
