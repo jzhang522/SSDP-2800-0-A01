@@ -1,6 +1,6 @@
 import './App.css'
-import AddItem from './components/AddItem'
 import Header from './components/Header'
+import AddItem from './components/AddItem'
 
 function App() {
 
