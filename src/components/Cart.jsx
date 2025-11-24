@@ -1,32 +1,31 @@
-import { useState } from "react";
+function Cart({ items, setItems }) {
 
-function Cart() {
-  const [name, setName] = useState("");
-  const [qty, setQty] = useState("");
-  const [price, setPrice] = useState("");
-  const [total, setTotal] = useState("");
-
-function totalCart(cartItem){
-    setTotal()
-}
-
-  // State for all obejects in cart
-  const [cartArr, setCartArr] = useState([]);
-
-  // Delete statment
-  function removeItem(itemToRemove) {
-    setCartArr(cartArr.filter((oneCart) => oneCart !== itemToRemove));
+  function removeItem(itemId) {
+    setItems(prev => prev.filter(item => item.id !== itemId));
   }
 
   return (
     <div className="cart-container">
       <h2 className="container-header">Cart Items</h2>
-      <ul className="cart-list"> 
-        <li className="cart-header">
-            <h3>Total Items: <span className="total-items"></span></h3>
-        </li>
-      </ul>
+
+      <h3 className="cart-header">
+        Total Items: <span className="total-items">{items.length}</span>
+      </h3>
+      {items.length > 0 ? (     <ul className="cart-list">
+        {items.map((item) => (
+          <li key={item.id}>
+            <strong>{item.name}</strong>  Price: ${item.price}  Qty:{item.quantity}
+            <button onClick={() => removeItem(item.id)}>Remove</button>
+          </li>
+      
+        ))}
+      </ul> ) : (
+        <p>Your cart is empty</p>
+      )
+    }
+ 
     </div>
   );
 }
+
 export default Cart;
