@@ -1,42 +1,267 @@
+/*
+============================================
+TABLE OF CONTENTS
+============================================
+1. Basic Reset
+2. Body and Root Styling
+3. Typography
+4. Layout Containers
+5. Form Elements
+6. Cart Items
+7. Buttons
+============================================
+*/
+
+/* ==========================================
+   1. BASIC RESET
+   ========================================== */
+* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   2. BODY AND ROOT STYLING
+   ========================================== */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: black;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    overflow: auto;
+    margin: 0;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    border-radius: 10%;
+}
+
+/* ==========================================
+   3. TYPOGRAPHY
+   ========================================== */
+h1 {
+    font-size: 2.25rem;
+    font-weight: 750;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 750;
+}
+
+h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 750;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 550;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ==========================================
+   4. LAYOUT CONTAINERS
+   ========================================== */
+
+.content-container {
+  margin-left: clamp(1rem, 12.5vw, 12rem);
+  margin-right: clamp(1rem, 12.5vw, 12rem);
+}
+
+/* Main container - holds add item and cart side by side */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+/* Add Item and Cart containers - shared styles */
+.add-item-container,
+.cart-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 48%;
+    padding: 1.5rem;
+    padding-bottom: 2.25rem;
+    background-color: #f5f5f5;
+    border-radius: 1rem;
+}
+
+/* ==========================================
+   5. FORM ELEMENTS
+   ========================================== */
+
+/* Input fields in add item form */
+.add-item-container input,
+#category  {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+select option:first-child {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+#error-msg {
+    color: #b71c1c;
+    background-color: #ffebee;
+    border-left: 4px solid #f44336;
+    padding: 8px 12px;
+    margin-top: 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ==========================================
+   6. CART ITEMS
+   ========================================== */
+
+/* Container for all cart items */
+.cart-item-container {
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Total items header */
+.cart-total {
+    display: flex;
+    justify-content: left;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: #e3f2fc;
+    border-radius: 0.25rem;
 }
 
-.card {
-  padding: 2em;
+.total-items {
+    font-weight: 500;
 }
 
-.read-the-docs {
-  color: #888;
+/* List of cart items */
+.cart-list {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual cart item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #ffffff;
+    border: 2px solid #e8e8e8;
+    border-radius: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.remove-button {
+    justify-self: end;
+}
+
+.item-name {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.item-price,
+.item-qty {
+    flex-grow: 1;
+    color: #808080;
+}
+
+.cart-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Item name in cart */
+.cart-item strong {
+    flex: 1;
+    min-width: 100px;
+}
+
+#empty-message {
+    font-style: italic;
+    font-size: 1rem;
+    color: #808080;
+}
+
+/* ==========================================
+   7. BUTTONS
+   ========================================== */
+
+/* Base button styles */
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button - Add to Cart */
+#submit-button {
+    width: 100%;
+    background-color: #646bfe;
+    margin-top: 1rem;
+    padding: 0.75rem;
+}
+
+#submit-button:hover {
+    background-color: #2e5fb8;
+}
+
+#submit-button:disabled {
+  background-color: #ccc;  
+  cursor: not-allowed;        
+  color: #666;      
+}
+
+/* Remove button - Delete item from cart */
+.remove-button {
+    background-color: #ce0a0a;
+    font-size: 0.9rem;
+}
+
+.remove-button:hover {
+    background-color: #a00808;
+}
+
+footer.footer {
+    position: relative;
+    margin-top: auto;
+    text-align: center;
+    color: black;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ccc;
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 1rem;
 }
