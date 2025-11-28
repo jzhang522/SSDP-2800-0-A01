@@ -158,12 +158,18 @@ select option:first-child {
     font-weight: 500;
 }
 
+#total-price {
+    background-color: #6cffbb44;
+}
+
 /* List of cart items */
 .cart-list {
     list-style: none;
     width: 100%;
     padding: 0;
     margin: 0;
+    max-height: 13rem;
+    overflow-y: auto;
 }
 
 /* Individual cart item */
@@ -176,9 +182,11 @@ select option:first-child {
     border: 2px solid #e8e8e8;
     border-radius: 0.25rem;
     flex-wrap: wrap;
+    gap: .5rem;
 }
 
 .remove-button {
+    flex-grow: 1;
     justify-self: end;
 }
 
@@ -187,10 +195,16 @@ select option:first-child {
     font-weight: bold;
 }
 
-.item-price,
-.item-qty {
+.item-info-container{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-info {
     flex-grow: 1;
     color: #808080;
+    font-size: .9rem;
 }
 
 .cart-item:last-child {
@@ -243,11 +257,25 @@ button {
 }
 
 /* Remove button - Delete item from cart */
-.remove-button {
+.remove-button,
+.clear-button {
     background-color: #ce0a0a;
     font-size: 0.9rem;
+    max-width: 6rem;
 }
 
+.clear-button {
+    font-size: 1rem;
+    position: relative;
+    max-width: none;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 1rem;
+    padding: 0.75rem;
+}
+
+.clear-button:hover,
 .remove-button:hover {
     background-color: #a00808;
 }

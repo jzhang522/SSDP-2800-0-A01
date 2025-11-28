@@ -49,7 +49,7 @@ function AddItem({ items, setItems }) {
         }
 
         if (category == "") {
-            setErrorMsg("Please select a Category.");
+            setErrorMsg("Please select a Category!");
             setIsErrorMsgVisiable(true);
             setIsAddBtnDisabled(true);
             return;
@@ -126,7 +126,6 @@ function AddItem({ items, setItems }) {
                     id="quantity"
                     name="quantity"
                     min="1" 
-                    max="99" 
                     step="1" 
                     className="form-input-box"
                     placeholder="Enter quantity"
@@ -150,10 +149,10 @@ function AddItem({ items, setItems }) {
                     
                 >
                     <option value="" disabled selected>--------------- Choose Category ---------------</option>
-                    <option value="food">Food</option>
-                    <option value="clothing">Clothing</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="others">Others</option>
+                    <option value="Food">Food</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Others">Others</option>
                 </select>
 
                 {/* Submit Button */}
