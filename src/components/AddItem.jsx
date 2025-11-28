@@ -48,6 +48,14 @@ function AddItem({ items, setItems }) {
             return;
         }
 
+        if (category == "") {
+            setErrorMsg("Please select a Category.");
+            setIsErrorMsgVisiable(true);
+            setIsAddBtnDisabled(true);
+            return;
+        }
+
+
         // Create new item object and add to cart
         setItems([
             ...items, // Spread existing items
@@ -135,7 +143,11 @@ function AddItem({ items, setItems }) {
                     name="category"
                     id="category"
                     value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    onChange={(e) => 
+                        {setCategory(e.target.value)
+                        setIsAddBtnDisabled(false);
+                    }}
+                    
                 >
                     <option value="" disabled selected>--------------- Choose Category ---------------</option>
                     <option value="food">Food</option>

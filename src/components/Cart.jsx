@@ -14,8 +14,13 @@ function Cart({ items, setItems }) {
     setItems(prev => prev.filter(item => item.id !== itemId));
   }
 
+  function removeAll(){
+    setItems([])
+  }
+
   // Store the total number of items to avoid recalculating
-  const totalItems = items.length;
+  const totalItems = items.reduce((accumulator, items) => accumulator + items.quantity, 0);
+  const totalPrice = items.reduce((accumulator, items) => accumulator + items.price, 0)
 
   return (
     <div className="cart-container">
@@ -24,9 +29,10 @@ function Cart({ items, setItems }) {
       
       <div className="cart-item-container">
         {/* Display total count of items */}
-        <h3 className="cart-total">
+        <h3 className="cart-total"> 
           Total Items: <span className="total-items">{totalItems}</span>
         </h3>
+        
     
         {/* Conditional rendering: show items if cart has items, otherwise show empty message */}
         {totalItems > 0 ? (
@@ -38,6 +44,8 @@ function Cart({ items, setItems }) {
                   <span className="item-name">{item.name}</span>
                   <span className="item-price">Price: ${item.price}</span>
                   <span className="item-qty">Qty: {item.quantity}</span>
+                  <span className="item-catagory">Category: {item.category}</span>
+
                   {/* Remove button triggers removeItem function with item's ID */}
                   <button className="remove-button" onClick={() => removeItem(item.id)}>
                     Remove
@@ -45,12 +53,17 @@ function Cart({ items, setItems }) {
                 </li>
               ))}
             </ul>
+            <h3 className="cart-total">
+              Total Price: <span className="total-price"> ${totalPrice}</span>
+            </h3>
+            
           </section>
         ) : (
           /* Empty cart message */
           <p id="empty-message">Your cart is empty</p>
         )}
       </div>
+      <button className="clear-btn" onClick={removeAll}>Clear Cart</button>
     </div>
   );
 }
